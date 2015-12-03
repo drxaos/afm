@@ -1,0 +1,36 @@
+<div class="pull-right" style="padding: 5px;">
+    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#newfolder" ng-click="touch()"
+            title="{{'create_folder' | translate}}">
+        <i class="glyphicon glyphicon-plus" style="font-size: 10px;"></i>
+    </button>
+    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#uploadfile" ng-click="touch()"
+            title="{{'upload_file' | translate}}">
+        <i class="glyphicon glyphicon-upload" style="font-size: 10px;"></i>
+    </button>
+    <button class="btn btn-primary btn-xs" ng-click="$parent.setTemplate('main-icons.html')"
+            ng-show="$parent.viewTemplate !== 'main-icons.html'" title="{{'icons' | translate}}">
+        <i class="glyphicon glyphicon-th-large" style="font-size: 10px;"></i>
+    </button>
+    <button class="btn btn-primary btn-xs" ng-click="$parent.setTemplate('main-table.html')"
+            ng-show="$parent.viewTemplate !== 'main-table.html'" title="{{'list' | translate}}">
+        <i class="glyphicon glyphicon-th-list" style="font-size: 10px;"></i>
+    </button>
+</div>
+
+<ol class="breadcrumb mb0">
+    <li>
+        <a href="" ng-click="fileNavigator.goTo(-1)">
+            <i class="glyphicon glyphicon-folder-open mr2"></i>
+        </a>
+    </li>
+    <li ng-repeat="(key, dir) in fileNavigator.currentPath track by key" ng-class="{'active':$last}"
+        class="animated fast fadeIn">
+        <a href="" ng-show="!$last" ng-click="fileNavigator.goTo(key)">
+            <i class="glyphicon glyphicon-folder-open mr2"></i> {{dir}}
+        </a>
+        <span ng-show="$last"><i class="glyphicon glyphicon-folder-open mr2"></i>  {{dir}}</span>
+    </li>
+    <li>
+        <button class="btn btn-primary btn-xs" ng-click="fileNavigator.upDir()">&crarr;</button>
+    </li>
+</ol>

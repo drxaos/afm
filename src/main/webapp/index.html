@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" data-ng-app="FileManagerApp">
+<head>
+    <!--
+      * Angular FileManager v1.4.4 (https://github.com/joni2back/angular-filemanager)
+      * Jonas Sciangula Street <joni2back@gmail.com>
+      * Licensed under MIT (https://github.com/joni2back/angular-filemanager/blob/master/LICENSE)
+    -->
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>angular-filemanager</title>
+
+    <!-- third party -->
+    <script src="webjars/angular/1.5.0-beta.2/angular.min.js"></script>
+    <script src="webjars/angular-translate/2.8.1/angular-translate.min.js"></script>
+    <script src="webjars/angular-cookies/1.4.8/angular-cookies.min.js"></script>
+    <script src="webjars/jquery/1.11.3/dist/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.6/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.6/dist/css/bootstrap.min.css" />
+    <!--<link rel="stylesheet" href="webjars/bootstrap/3.3.6/dist/css/bootstrap-theme.min.css" />-->
+    <!-- /third party -->
+
+    <script src="js/app.js"></script>
+    <script src="js/directives/directives.js"></script>
+    <script src="js/filters/filters.js"></script>
+    <script src="js/providers/config.js"></script>
+    <script src="js/entities/chmod.js"></script>
+    <script src="js/entities/item.js"></script>
+    <script src="js/services/filenavigator.js"></script>
+    <script src="js/services/fileuploader.js"></script>
+    <script src="js/providers/translations.js"></script>
+    <script src="js/controllers/main.js"></script>
+    <script src="js/controllers/selector-controller.js"></script>
+    <link href="css/animations.css" rel="stylesheet">
+    <link href="css/dialogs.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+
+    <script type="text/javascript">
+        //example to override angular-filemanager default config
+        angular.module('FileManagerApp').config(['fileManagerConfigProvider', function (config) {
+            var defaults = config.$get();
+            config.set({
+                appName: 'File Manager',
+                defaultLang: 'en',
+                listUrl: "/api",
+                uploadUrl: "/api",
+                renameUrl: "/api",
+                copyUrl: "/api",
+                removeUrl: "/api",
+                editUrl: "/api",
+                getContentUrl: "/api",
+                createFolderUrl: "/api",
+                downloadFileUrl: "/api",
+                compressUrl: "/api",
+                extractUrl: "/api",
+                permissionsUrl: "/api",
+                sidebar: !0,
+                breadcrumb: !0,
+                allowedActions: {
+                    rename: !0,
+                    copy: !0,
+                    edit: !0,
+                    changePermissions: !0,
+                    compress: !0,
+                    compressChooseName: !0,
+                    extract: !0,
+                    download: !0,
+                    preview: !0,
+                    remove: !0
+                },
+                enablePermissionsRecursive: !0,
+                compressAsync: !0,
+                extractAsync: !0,
+                isEditableFilePattern: /\.(txt|html?|aspx?|ini|pl|py|md|css|js|log|htaccess|htpasswd|json|sql|xml|xslt?|sh|rb|as|bat|cmd|coffee|php[3-6]?|java|c|cbl|go|h|scala|vb)$/i,
+                isImageFilePattern: /\.(jpe?g|gif|bmp|png|svg|tiff?)$/i,
+                isExtractableFilePattern: /\.(gz|tar|rar|g?zip)$/i,
+                tplPath: "templates"
+            });
+        }]);
+    </script>
+</head>
+
+<body class="ng-cloak">
+<angular-filemanager></angular-filemanager>
+
+</body>
+</html>
